@@ -28,7 +28,7 @@ class OrderList
      */
     public function addCourier($courierName)
     {
-        // Check for Couriers being already in the array.
+        // Check for Couriers being already in the array. If it is it might already have some orders.
         if (isset($this->orders[$courierName])) {
             throw new \Exception("This courier is already there.");
         }
@@ -37,7 +37,13 @@ class OrderList
         return $this;
     }
 
-    public function addOrder(String $courierName, String $courierPath, array $data)
+    /** Add a new order. Requires a couriername, courierpath and the data as an array.
+     * final version wouldnt require courierpath, but heck - autoloader.
+     * @param String $courierName
+     * @param String $courierPath
+     * @param array $data
+     */
+    public function addOrder(String $courierName, String $courierPath, array $data = [])
     {
         //initialize order and set the data.
         $order = new Order();
@@ -47,11 +53,18 @@ class OrderList
         $this->orders[$courierName][$consID] = $order;
     }
 
+    /** Get all orders
+     * @return array
+     */
     public function getOrders()
     {
         return $this->orders;
     }
 
+    /** get the array of parcels
+     * @param String $courierName
+     * @return mixed
+     */
     public function getOrdersByCourier(String $courierName)
     {
         return $this->orders[$courierName];

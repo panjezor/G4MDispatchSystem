@@ -43,7 +43,9 @@ class Main
         $this->orderList->addOrder($courier, $this->couriers[$courier], $data);
     }
 
-    // Finish the day, send all the batches to the appropriate couriers
+    /** Finish the day, send all the batches to the appropriate couriers
+     *
+     */
     public function endBatch(): void
     {
         // check if the day has been started

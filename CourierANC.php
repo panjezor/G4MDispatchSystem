@@ -29,7 +29,8 @@ class CourierANC implements ICourier
      */
     public function sendConsignmentList(array $orders): bool
     {
+        //foreach order in orders send the key over to the courier
         var_dump("ANC", $orders);
-        return true;
+        return true; //if sent then true, if not then false.
     }
 }
